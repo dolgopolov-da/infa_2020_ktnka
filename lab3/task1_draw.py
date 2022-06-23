@@ -8,25 +8,26 @@ screen_height = 500
 screen_width = 500
 screen = pygame.display.set_mode((screen_height, screen_width))
 
+# общие координаты
 x, y = screen_height / 2, screen_width / 2
 R = screen_height / 4
-
+# координаты левого глаза
 R_left_eye_max = R / 6
 R_left_eye_min = R / 12
 x_left_eye = x - 50
 y_left_eye = y - 40
-
+# координаты правого глаза
 R_right_eye_max = R / 8
 R_right_eye_min = R / 14
 x_right_eye = x + 50
 y_right_eye = y - 40
-
+# координаты левой брови
 x_left_eyebrow = x_left_eye + R_left_eye_max * 0.7
 y_left_eyebrow = y_left_eye - R_left_eye_max * 0.9
-
+# координаты правой брови
 x_right_eyebrow = x_right_eye - R_left_eye_max * 0.7
 y_right_eyebrow = y_right_eye - R_left_eye_max * 0.8
-
+# координаты середины рта
 x_mouth = x
 y_mouth = y + R * 0.6
 
