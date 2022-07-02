@@ -1,6 +1,6 @@
 import pygame
-from pygame.draw import *
 import math
+from pygame.draw import *
 
 pygame.init()
 
@@ -17,9 +17,10 @@ y = screen_height // 2
 def main():
     '''Рисует картину целиком'''
     draw_background(x, y, screen_width)
-    draw_seagull()
+    #draw_seagull()
+    load_pic_seagull()
     draw_seagulls()
-    draw_fish()
+    #draw_fish()
 
 
 def draw_background(x, y, screen_width):
@@ -33,9 +34,19 @@ def draw_background(x, y, screen_width):
     rect(background, "royalblue4", (x, 0, screen_width, y * 0.2))
     screen.blit(background, (0, 0))
 
-
+'''
 def draw_seagull():
-    '''Рисует большую чайку'''
+    """Рисует большую чайку"""
+
+    # draw tail
+    tail = pygame.Surface((70, 100))
+    #draw_tail = gfxdraw.bezier(tail, [(30, 0), (70, 60), (30, 55), (5, 35), (30, 0)], 1000, (255, 255,255))
+    tail = tail.convert_alpha()
+    polygon(tail, "white", [(30, 0), (70, 60), (30, 55), (5, 35), (30, 0)])
+    aalines(tail, "white", True, [(30, 0), (70, 60), (30, 55), (5, 35), (30, 0)])
+    screen.blit(tail, (100, 520))
+
+    # draw bode, neck, head and eye
     ellipse(screen, "white", (220-130/2, 580-70/2, 130, 70)) # body
     ellipse(screen, "white", (290-70/2, 575-25/2, 70, 25)) # neck
     ellipse(screen, "white", (335-50/2, 565-30/2, 50, 30)) # head
@@ -68,16 +79,38 @@ def draw_seagull():
     ellipse(leg2_2, "white", (0, 0, 50, 15))  # leg1
     leg2_2 = pygame.transform.rotate(leg2_2, -25)
     screen.blit(leg2_2, (240, 615))
+'''
 
-
+def load_pic_seagull():
+    pic_load_seagull = pygame.image.load("task2_draw(pic15.1)/15_1_half.png").convert_alpha()
+    pic_scale = pygame.transform.scale(pic_load_seagull, (screen_width, screen_height))
+    pic_load_seagull_rect = pic_scale.get_rect()
+    screen.blit(pic_scale, (0, 0), pic_load_seagull_rect)
 
 
 def draw_seagulls():
-    pass
+    pos1 = (350, 140)
+    seagulls1 = pygame.Surface((150, 60), pygame.SRCALPHA, 32)
+    seagulls1 = seagulls1.convert_alpha()
+    arc(seagulls1, "white", (0, 0, 75, 60), math.pi*0.2, math.pi*0.8, 2)
+    arc(seagulls1, "white", (60, 0, 75, 60), math.pi*0.2, math.pi*0.8, 2)
+    screen.blit(seagulls1, pos1)
 
+    pos2 = (100, 280)
+    seagulls2 = pygame.Surface((150, 60), pygame.SRCALPHA, 32)
+    seagulls2 = seagulls2.convert_alpha()
+    arc(seagulls2, "white", (0, 0, 75, 60), math.pi*0.2, math.pi*0.8, 2)
+    arc(seagulls2, "white", (60, 0, 75, 60), math.pi*0.2, math.pi*0.8, 2)
+    seagulls2 = pygame.transform.rotate(seagulls2, -15)
+    screen.blit(seagulls2, pos2)
 
-def draw_fish():
-    pass
+    pos3 = (90, 30)
+    seagulls3 = pygame.Surface((150, 60), pygame.SRCALPHA, 32)
+    seagulls3 = seagulls3.convert_alpha()
+    arc(seagulls3, "white", (0, 0, 75, 60), math.pi * 0.2, math.pi * 0.8, 2)
+    arc(seagulls3, "white", (60, 0, 75, 60), math.pi * 0.2, math.pi * 0.8, 2)
+    seagulls3 = pygame.transform.rotate(seagulls3, 15)
+    screen.blit(seagulls3, pos3)
 
 
 main()
@@ -85,7 +118,6 @@ main()
 pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
-
 
 while not finished:
     clock.tick(FPS)
