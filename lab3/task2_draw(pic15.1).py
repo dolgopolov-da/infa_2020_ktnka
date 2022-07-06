@@ -17,10 +17,8 @@ y = screen_height // 2
 def main():
     '''Рисует картину целиком'''
     draw_background(x, y, screen_width)
-    #draw_seagull()
     load_pic_seagull()
     draw_seagulls()
-    #draw_fish()
 
 
 def draw_background(x, y, screen_width):
