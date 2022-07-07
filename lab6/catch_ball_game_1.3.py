@@ -18,7 +18,7 @@ MAGENTA = (255, 0, 255)
 CYAN = (0, 255, 255)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
+COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN, WHITE]
 
 points = 0
 balls = []
@@ -52,7 +52,6 @@ def click(event):
 pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
-
 
 while not finished:
     clock.tick(FPS)
