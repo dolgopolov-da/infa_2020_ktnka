@@ -1,9 +1,13 @@
+'''Рисует шарики случайного диаметра в случайных координатах.
+При щелчке внутри шарика прибавляет одно очко
+'''
+
 import pygame
 from pygame.draw import *
 from random import randint
 pygame.init()
 
-FPS = 0.5
+FPS = 1
 screen = pygame.display.set_mode((1200, 900))
 
 RED = (255, 0, 0)
@@ -49,7 +53,6 @@ def click(event):
 pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
-
 
 while not finished:
     clock.tick(FPS)
