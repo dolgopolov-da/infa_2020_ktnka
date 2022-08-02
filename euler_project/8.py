@@ -26,28 +26,35 @@
 '''
 import math
 
-number_of_multipliers = 13
-max_multiply = 1
-lst = []
-data = []
+#number_of_multipliers = 13
 
-with open('8_1.txt') as f:
-    frl = f.readline()
-    for line in frl:
-        for num in line.split():
-            lst.append(int(num))
-#print(lst)
 
-for i in range(len(lst)):
-    if i+number_of_multipliers <= len(lst):
-        data.append(lst[i:i+number_of_multipliers:1])
-#print(data)
+def max_multiply_sequence(file : 'txt', number_of_multipliers: int):
+    max_multiply = 1
+    lst = []
+    data = []
 
-for i in data:
-    if max_multiply == 1:
-        max_multiply = math.prod(i)
-    elif math.prod(i) <= max_multiply:
-        continue
-    else:
-        max_multiply = math.prod(i)
-print(max_multiply)
+    with open(file) as f:
+        frl = f.readline()
+        for line in frl:
+            for num in line.split():
+                lst.append(int(num))
+    #print(lst)
+
+    for i in range(len(lst)):
+        if i+number_of_multipliers <= len(lst):
+            data.append(lst[i:i+number_of_multipliers:1])
+    #print(data)
+
+    for i in data:
+        if max_multiply == 1:
+            max_multiply = math.prod(i)
+        elif math.prod(i) <= max_multiply:
+            continue
+        else:
+            max_multiply = math.prod(i)
+
+    print("Наибольшее произведение {} последовательных цифр "
+          "в данном наборе чисел из файла '{}':".format(number_of_multipliers, file), max_multiply)
+
+max_multiply_sequence('8_1.txt', 13)
