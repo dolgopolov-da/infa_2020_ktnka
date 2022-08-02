@@ -24,21 +24,30 @@
 
 Найдите наибольшее произведение тринадцати последовательных цифр в данном числе.
 '''
+import math
 
+number_of_multipliers = 13
 max_multiply = 1
 lst = []
 data = []
 
 with open('8_1.txt') as f:
-    #fr = f.read()
-    for line in f:
-        for num in line:
-            for x in num.split():
-                lst.append(int(x))
-print(lst)
+    frl = f.readline()
+    for line in frl:
+        for num in line.split():
+            lst.append(int(num))
+#print(lst)
 
+for i in range(len(lst)):
+    if i+number_of_multipliers <= len(lst):
+        data.append(lst[i:i+number_of_multipliers:1])
+#print(data)
 
-
-print(data)
-
-
+for i in data:
+    if max_multiply == 1:
+        max_multiply = math.prod(i)
+    elif math.prod(i) <= max_multiply:
+        continue
+    else:
+        max_multiply = math.prod(i)
+print(max_multiply)
