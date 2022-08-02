@@ -57,4 +57,5 @@ def max_multiply_sequence(file : 'txt', number_of_multipliers: int):
     print("Наибольшее произведение {} последовательных цифр "
           "в данном наборе чисел из файла '{}':".format(number_of_multipliers, file), max_multiply)
 
+
 max_multiply_sequence('8_1.txt', 13)
