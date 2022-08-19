@@ -24,4 +24,5 @@ def sum_simple_numbers(min_number: int, max_number: int):  # excluding this numb
 
     print("Сумма простых чисел от {0} до {1} (не включая {1}): ".format(min_number, max_number), sum(simple_num))
 
+
 sum_simple_numbers(2, 2000000)
