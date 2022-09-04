@@ -14,7 +14,9 @@ def is_valid(text):
 
 def main():
     game = True
+    count = 0
     while game:
+        count += 1
         txt = input('Введите число от 1 до 100: ')
         if not is_valid(txt):
             print('А может быть все-таки введем целое число от 1 до 100?')
@@ -30,6 +32,18 @@ def main():
             print('Вы угадали, поздравляем!')
             game = False
     else:
-        print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+        print(f'Количество попыток: {count}')
+
+    while True:
+        again = input('Хотите сыграть ещё раз? ("д" - да, "н" - нет): ')
+        if again == "н":
+            print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+            break
+        elif again == "д":
+            main()
+            break
+        else:
+            print('Нужно ввести: "д" - да или "н" - нет, другие ответы не принимаются :)')
+
 
 main()
