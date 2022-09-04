@@ -1,3 +1,5 @@
+'''Игра "Угадайка"'''
+
 import random
 
 def is_valid(text, n):
