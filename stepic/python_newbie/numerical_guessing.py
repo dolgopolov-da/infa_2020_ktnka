@@ -1,7 +1,5 @@
 import random
 
-
-
 def is_valid(text, n):
     for i in range(len(text)):
         if not text[i].isdigit():
@@ -10,6 +8,7 @@ def is_valid(text, n):
         return False
     else:
         return True
+
 
 def main():
     while True:
