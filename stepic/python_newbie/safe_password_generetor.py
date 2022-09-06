@@ -60,6 +60,21 @@ def is_exclude_bad_symbols():
             print('Недопустимый ответ.')
 
 
+def generate_password(password_amount, password_len, char_list):
+    # заполнение итоговой переменной chars
+    password_list = []
+
+    for i in range(int(password_amount)):
+        chars = ''
+        for j in range(int(password_len)):
+            random_char = random.choice(char_list[random.randrange(0, len(char_list))])
+            chars += random_char
+        password_list.append(chars)
+
+    print('Пароли сгенерированы: ')
+    print(*password_list, sep='\n')
+
+
 def main():
     digits = '0123456789'
     lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
@@ -118,28 +133,7 @@ def main():
         else:
             break
 
-    # заполнение итоговой переменной chars
-    password_list = []
-
-
-    for i in range(int(password_amount)):
-        chars = ''
-        for j in range(int(password_len)):
-            random_char = random.choice(char_list[random.randrange(0, len(char_list))])
-            chars += random_char
-        password_list.append(chars)
-
-    print('Пароли сгенерированы: ')
-    print(*password_list, sep='\n')
-
-
-
-
-
-
-
-
-
+    generate_password(password_amount, password_len, char_list)
 
 
 main()
