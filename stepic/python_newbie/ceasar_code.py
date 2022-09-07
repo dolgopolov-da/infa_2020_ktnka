@@ -61,20 +61,20 @@ def main():
         message = input('Введите шифруемое сообщение: ')
         for i in range(len(message)):
             if message[i] not in dict_lower + dict_upper + digits + punctuation:
-                print('''В шифруемом сообщении обнаружен символ из другого языка.\n
-                      Выберите действие: 1 - ввести сообщение\n
-                                         2 - изменить выбор языка
-                ''')
-                reselect = input()
-                if reselect == '1':
-                    break
-                elif reselect == '2':
-                    dict_lower, dict_upper = lang_selection(ru_dict_lower, ru_dict_upper,
-                                                            en_dict_lower, en_dict_upper)
-                    break
-                else:
-                    print('Неверный ввод')
-                    break
+                print('В шифруемом сообщении обнаружен символ из другого языка.')
+
+                while True:
+                    print('Выберите действие:', '1 - ввести сообщение', '2 - изменить выбор языка', sep='\n')
+                    reselect = input()
+                    if reselect == '1':
+                        break
+                    elif reselect == '2':
+                        dict_lower, dict_upper = lang_selection(ru_dict_lower, ru_dict_upper,
+                                                                en_dict_lower, en_dict_upper)
+                        break
+                    else:
+                        print('Неверный ввод')
+                break
             else:
                 is_message_valid = True
 
