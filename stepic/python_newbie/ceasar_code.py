@@ -7,7 +7,7 @@ en_dict_lower = 'abcdefghijklmnopqrstuvwxyz'
 en_dict_upper = ''.join([en_dict_lower[i].upper() for i in range(len(en_dict_lower))])
 
 # строка кириллических символов
-ru_dict_lower = 'абвгдеёжзиклмнопрстуфхцчшщъыьэюя'
+ru_dict_lower = 'абвгдежзийклмнопрстуфхцчшщъыьэюя'
 ru_dict_upper = ''.join([ru_dict_lower[i].upper() for i in range(len(ru_dict_lower))])
 
 # строки нешифруемых символов
@@ -38,7 +38,7 @@ def lang_selection(dict1_low, dict1_up, dict2_low, dict2_up):
 
 def encrypt_text(text, dict_low, dict_up):
     """Запрашивает шаг сдвига и выполняет шифрование введенного текста"""
-    rot_n = int(input('Введите шаг сдвига для дешифровки: '))
+    rot_n = int(input('Введите шаг сдвига для шифрования: '))
     print(f'Используемое преобразование в шифре Цезаря: ROT_{rot_n}')
     encrypted_dict_low = ''
     encrypted_dict_up = ''
