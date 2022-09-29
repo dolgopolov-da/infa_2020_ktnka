@@ -31,24 +31,37 @@
 
 import numpy as np
 import csv
+import math
 
 lst = []
+maximum = -1
 
 def arr_load(filename):
     with open(filename) as file_name:
         for line in file_name:
-            for num in line.split():
-                lst.append(int(num))
-
-        #array = np.loadtxt(file_name, delimiter=" ", dtype=int)
-    print(lst)
-
-    arr = np.array(lst)
-    print(arr)
+            lst.append([int(x) for x in line.split()])
+    for el in lst:
+        print(el)
 
 
 arr_load("11_1.txt")
 
+for i in range(len(lst)):
+    for j in range(len(lst[i])):
+        if i > 2 and i < len(lst) - 3:
+            if j > 2 and j < len(lst[i]) - 3:
+                sublst = [[] for _ in range(8)]
+                for k in range(4):
+                    sublst[0].append(lst[i - k][j])
+                    sublst[1].append(lst[i + k][j])
+                    sublst[2].append(lst[i][j - k])
+                    sublst[3].append(lst[i][j + k])
+                    sublst[4].append(lst[i - k][j - k])
+                    sublst[5].append(lst[i - k][j + k])
+                    sublst[6].append(lst[i + k][j - k])
+                    sublst[7].append(lst[i + k][j + k])
+                for el in sublst:
+                    if math.prod(el) > maximum:
+                        maximum = math.prod(el)
 
-#arr = np.zeros((20, 20), dtype=int)
-#print(arr)
+print(maximum)
