@@ -90,7 +90,7 @@ def display_hangman(tries):
 
 
 def play(word):
-    word_completion = '_' * len(word)
+    word_completion = word[0] + '_' * (len(word) - 2) + word[len(word) - 1]
     lst_word_completion = list(word_completion)
     guessed = False
     guessed_letters = []
