@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин | Murman-salut</title>
+</head>
+<body>
+<form id="form" name="form">
+    <div>
+        <div>
+            <label for="name">Имя: </label>
+            <input id="name" value="Иванов Иван">
+
+        </div>
+        <div>
+            <label for="tel">Телефон: </label>
+            <input id="tel" value="+79999999999">
+        </div>
+        <div>
+            <label for="email">Email адрес: </label>
+            <input id="email" value="example@email.com">
+        </div>
+    </div>
+
+    <div>
+        <label for="adr">Адрес для доставки, или самовывоз: </label>
+        <input id="adr" value="Мурманск, Ленина 12 кв 12">
+    </div>
+    <div >
+        <input id="age" type="checkbox" />
+        <label for="age">Мне есть 18 лет </label>
+    </div>
+    <div>
+        <input type="submit" value="Отправить">
+    </div>
+</form>
+<script async  type="text/javascript">
+  let items = [
+    {
+      "_id": "ТР157",
+      "category": "Бенгальские свечи",
+      "hide": false,
+      "link": "https://www.youtube.com/watch?app=desktop&v=b6zVBFJh-3Q",
+      "price": 45,
+      "title": "ТР157 Бенгальская свеча 170 мм ЭКСТРА",
+      "value": 6,
+      "amount": 1
+    },
+    {
+      "_id": "ТР166",
+      "category": "Бенгальские свечи",
+      "hide": false,
+      "link": "https://www.youtube.com/watch?v=b6zVBFJh-3Q",
+      "price": 60,
+      "title": "ТР166 Бенгальская свеча КЛАССИКА 200 мм",
+      "value": 6,
+      "amount": 2
+    },
+    {
+      "_id": "РС1720",
+      "category": "Бенгальские свечи",
+      "hide": false,
+      "link": "https://www.youtube.com/watch?v=nYhGzm9OyIo",
+      "price": 100,
+      "title": "РС1720 Бенгальский огонь 300 мм",
+      "value": 3,
+      "amount": 1
+    }
+  ]
+  const form = document.getElementById('form');
+  form.addEventListener('submit', formSend);
+
+  async function formSend(e) {
+    let name = document.getElementById('name').value,
+      tel = document.getElementById('tel').value,
+      email = document.getElementById('email').value,
+      adr = document.getElementById('adr').value,
+      age = document.getElementById('age').value;
+    let data = {
+      name: name,
+      phone: tel,
+      email: email,
+      address: adr,
+      age: Boolean(age),
+      items: items
+    };
+    e.preventDefault();
+
+    console.log(data);
+
+
+    let res = await fetch('./mailer.py', {
+      method: 'POST',
+      headers: {
+                // 'Content-Type': 'application/json'
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+      body: JSON.stringify(data)
+    });
+    if (res.status === 200) {
+        console.log('Отправлено!')
+      } else {
+        console.log('Ошибка');
+      }
+
+  }
+
+</script>
+</body>
+</html>
