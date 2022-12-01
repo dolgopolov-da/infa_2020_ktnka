@@ -25,7 +25,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
 def send_email(message):
     sender = 'dima.greensfan@gmail.com'
-    password = 'mhqrrqnlfzxlrwcl'
+    password = ''
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
 
